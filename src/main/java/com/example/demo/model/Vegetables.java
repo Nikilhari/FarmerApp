@@ -17,5 +17,7 @@ public class Vegetables {
     private String farmerCode;
     private String vegetableName;
     private double vegetablePrice;
+    private String imageUrl;
+
 
 }
