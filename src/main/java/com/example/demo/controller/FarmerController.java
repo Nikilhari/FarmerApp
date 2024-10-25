@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
+
 @RequestMapping("/farmer")
 public class FarmerController {
     @Autowired
@@ -24,7 +26,7 @@ public class FarmerController {
     {
         if(farmerService.loginFarmer(farmer.getFarmerCode(), farmer.getPassword())!=null)
         {
-                return ResponseEntity.ok("success");
+                return ResponseEntity.ok("Success");
         }
         else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("failed");

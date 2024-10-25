@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/vegetables")
 public class VegetableController {
 

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/User")
 public class CustomerController {
 
@@ -22,7 +23,7 @@ public class CustomerController {
     @PostMapping("/login")
     public ResponseEntity<String> loginCustomer(@RequestBody Customer customer) {
         if (customerService.loginCustomer(customer.getEmail(), customer.getPassword()) != null) {
-            return ResponseEntity.ok("success");
+            return ResponseEntity.ok("Success");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("failed");
         }
