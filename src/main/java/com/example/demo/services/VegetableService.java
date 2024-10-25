@@ -16,17 +16,26 @@ public class VegetableService {
     {
         vegetableRepo.save(vegetables);
     }
-    public Map<String, Double> getAveragePrices() {
+    public Map<String, Map<String, Object>> getAveragePrices() {
         List<Object[]> avgPricesList = vegetableRepo.findAveragePrices();
-        Map<String, Double> averagePrices = new HashMap<>();
+        Map<String, Map<String, Object>> averagePricesWithImages = new HashMap<>();
 
         for (Object[] result : avgPricesList) {
             String vegetableName = (String) result[0];
             Double averagePrice = (Double) result[1];
-            averagePrices.put(vegetableName, averagePrice);
+            String imageUrl = (String) result[2]; // Assuming imageUrl is the 3rd field
+
+            // Create a map for price and image URL
+            Map<String, Object> priceAndImage = new HashMap<>();
+            priceAndImage.put("averagePrice", averagePrice);
+            priceAndImage.put("imageUrl", imageUrl);
+
+            // Add the vegetable name as the key and the price/image map as the value
+            averagePricesWithImages.put(vegetableName, priceAndImage);
         }
-        return averagePrices;
+        return averagePricesWithImages;
     }
+
 
 
 }

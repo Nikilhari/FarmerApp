@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface VegetableRepo extends JpaRepository<Vegetables, Long> {
 
-    @Query("SELECT v.vegetableName, AVG(v.vegetablePrice) FROM Vegetables v GROUP BY v.vegetableName")
+    @Query("SELECT v.vegetableName, AVG(v.vegetablePrice), v.imageUrl FROM Vegetables v GROUP BY v.vegetableName, v.imageUrl")
     List<Object[]> findAveragePrices();
+
 }

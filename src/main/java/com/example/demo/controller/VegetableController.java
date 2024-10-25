@@ -22,8 +22,8 @@ public class VegetableController {
         return ResponseEntity.ok("Price added successfully");
     }
     @GetMapping("/")
-    public ResponseEntity<Map<String, Double>> getVegetableAverages() {
-        Map<String, Double> averages = vegetableService.getAveragePrices();
+    public ResponseEntity<Map<String, Map<String, Object>>> getVegetableAverages() {
+        Map<String, Map<String, Object>> averages = vegetableService.getAveragePrices();
         return ResponseEntity.ok(averages);
     }
 }
