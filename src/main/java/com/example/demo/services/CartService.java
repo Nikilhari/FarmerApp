@@ -15,8 +15,19 @@ public class CartService {
         return cartRepo.findByEmail(email);
     }
 
+
     public Cart addOrUpdateCart(Cart cart) {
-        return cartRepo.save(cart);
+        Cart existingCartItem = cartRepo.findByEmailAndVegetableName(cart.getEmail(), cart.getVegetableName());
+
+        if (existingCartItem != null) {
+            // If the item already exists, update the quantity
+            existingCartItem.setQuantity(cart.getQuantity());
+            existingCartItem.setPrice(cart.getPrice()); // Update price if needed
+            return cartRepo.save(existingCartItem);
+        } else {
+            // If item is new, save as is
+            return cartRepo.save(cart);
+        }
     }
 
     public void removeCartItem(Long cartId) {

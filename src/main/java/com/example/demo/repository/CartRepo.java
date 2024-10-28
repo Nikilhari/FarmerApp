@@ -8,4 +8,5 @@ import java.util.List;
 public interface CartRepo extends JpaRepository<Cart, Long> {
     List<Cart> findByEmail(String email);
 
+    Cart findByEmailAndVegetableName(String email, String vegetableName);
 }
